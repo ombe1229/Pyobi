@@ -16,6 +16,7 @@ def list():
     }
     return render_template('list.html', data=data)
 
+
 @app.route('/list/<page>')
 def list_page(page):
     title = f'Pyobi - Page {page}'
@@ -25,6 +26,7 @@ def list_page(page):
         'mlist': mlist
     }
     return render_template('list.html', data=data)
+
 
 @app.route('/viewer/<index>')
 def viewer(index):
@@ -40,6 +42,7 @@ def viewer(index):
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html')
+
 
 @app.errorhandler(500)
 def internal_server_error(error):

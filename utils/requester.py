@@ -8,11 +8,12 @@ def get_page_json(index):
 
 
 class Requester:
+
     def get_title(self, index):
         data = requests.get(f'https://api.hiyobi.me/gallery/{index}')
         resp = data.json()
         return resp['title']
-    
+
     def get_page_list(self, index):
         resp = get_page_json(index)
         result = []
