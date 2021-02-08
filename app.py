@@ -6,6 +6,26 @@ app = Flask('HiyobiViewer')
 requester = Requester()
 
 
+@app.route('/')
+def list():
+    title = 'Pyhobi - Page 1'
+    mlist = requester.get_list(1)
+    data = {
+        'title': title,
+        'mlist': mlist
+    }
+    return render_template('list.html', data=data)
+
+@app.route('/list/<page>')
+def list_page(page):
+    title = f'Pyobi - Page {page}'
+    mlist = requester.get_list(page)
+    data = {
+        'title': title,
+        'mlist': mlist
+    }
+    return render_template('list.html', data=data)
+
 @app.route('/viewer/<index>')
 def viewer(index):
     title = requester.get_title(index)
