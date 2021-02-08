@@ -21,3 +21,8 @@ class Requester:
             img = f'https://cdn.hiyobi.me/data/{index}/{file}'
             result.append(img)
         return result
+
+    def get_list(self, page):
+        data = requests.get(f'https://api.hiyobi.me/list/{page}')
+        resp = data.json()
+        return resp
