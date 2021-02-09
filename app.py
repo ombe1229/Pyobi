@@ -28,7 +28,7 @@ def list_page(page):
     return render_template('list.html', data=data)
 
 
-@app.route('/viewer/<index>')
+@app.route('/reader/<index>')
 def viewer(index):
     title = requester.get_title(index)
     page_list = requester.get_page_list(index)
@@ -36,7 +36,7 @@ def viewer(index):
         'title': title,
         'page_list': page_list
     }
-    return render_template('viewer.html', data=data)
+    return render_template('reader.html', data=data)
 
 
 @app.errorhandler(404)
