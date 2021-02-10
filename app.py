@@ -7,7 +7,7 @@ requester = Requester()
 
 
 @app.route('/')
-def list():
+def home():
     title = 'Pyhobi - Page 1'
     mlist = requester.get_list(1)
     data = {
@@ -40,13 +40,9 @@ def viewer(index):
 
 
 @app.errorhandler(404)
-def page_not_found(error):
-    return render_template('page_not_found.html')
-
-
 @app.errorhandler(500)
-def internal_server_error(error):
-    return render_template('internal_server_error.html')
+def error_page(error):
+    return render_template('error.html', error=error)
 
 
 app.run(host='127.0.0.1', port=8080)
